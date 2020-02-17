@@ -96,3 +96,29 @@ if i == 1 {
     // this example will compile successfully
     print("ok")
 }
+
+let http404Error = (404, "Not Found")
+// http404Error is of type (Int, String), and equals (404, "Not Found")
+let (statusCode, statusMessage) = http404Error
+print("The status code is \(statusCode)")
+// prints "The status code is 404"
+print("The status message is \(statusMessage)")
+// prints "The status message is Not Found"
+let (justTheStatusCode, _) = http404Error
+print("The status code is \(justTheStatusCode)")
+// prints "The status code is 404"
+let http200Status = (statusCode: 200, description: "OK")
+print("The status code is \(http200Status.statusCode)")
+// prints "The status code is 200"
+print("The status message is \(http200Status.description)")
+// prints "The status message is OK"
+
+var error: (errorCode: Int, errorMessage: Any) = (errorCode: 200, errorMessage: "OK")
+error.errorMessage = 3
+print(error)
+
+func writeFile(content: String) -> (errorCode: Int, errorMessage: String) {
+    return (1, "not found")
+}
+let err = writeFile(content: "")
+print(err)
